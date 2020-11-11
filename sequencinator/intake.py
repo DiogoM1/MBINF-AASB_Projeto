@@ -3,6 +3,20 @@ def ler_seq(FileHandle):
     s
     '''
     seq = ""
+    maiores = 0
+    while(maiores<2):
+        cursor=FileHandle.tell()
+        linha=FileHandle.readline()
+        if(linha==""): break
+        if linha[0]!='>':
+            seq+=linha
+        else:
+            maiores+=1
+    FileHandle.seek(cursor)
+    return seq.replace("\n", "")
+
+    
+    seq = ""
     with open(FileHandle, 'r') as file:
         for line in file:
             seq.append(line)
@@ -17,21 +31,22 @@ def ler_FASTA_seq(FileHandle):
     Retorna uma String com a sequência, ou vazia quando atingir o EOF.
     '''
     seq = ""
-    maiores = 0
+    maiores = 0 # quantas vezes apareceu o símbolo '>', usado para travar o cíclo no fim da sequência
     while(maiores<2):
         cursor=FileHandle.tell()
         linha=FileHandle.readline()
         if(linha==""): break
         if linha[0]!='>':
             seq+=linha
-        else:
+        else: # if linha[0]=='>'
             maiores+=1
     FileHandle.seek(cursor)
     return seq.replace("\n", "")
 
-# main
 
-file = open(r"D:\Universidade\Mestradooo\Algoritmos para Análise de Sequências Biológicas\MBINF-AASB_Projeto\sequencinator\protein.txt", mode='r', encoding='utf-8')
+
+sequencia = input("indique o path do ficheiro FASTA que quer abrir:" )
+file = open(sequencia, mode='r', encoding='utf-8')
 todas_as_seq = []
 i=0
 while(True):
@@ -45,4 +60,3 @@ while(True):
     else: 
         break
 file.close
-
