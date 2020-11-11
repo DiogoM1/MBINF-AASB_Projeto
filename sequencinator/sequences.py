@@ -1,5 +1,5 @@
 from .data.dic_codao2amino import gene_code as gene_code
-
+import re
 
 def complemento_inverso(seq):
     '''
@@ -31,3 +31,26 @@ def reading_frames(seq):
     for i in range(0, 3):
         orf.append[seq.upper()[i:], complemento_inverso(seq.upper())[i:]]
     return orf
+
+
+def valida(seq):
+    '''
+    Verifica se a sequência de ADN é válida
+   
+    Parameters
+        ----------
+        seq : str
+            Sequência de ADN  
+
+   Returns
+        ------
+        True ou False
+ 
+    '''
+    seq = seq.upper()     
+    if  re.search("[^TAGC]",seq) == None:        
+        validade = True
+    else:
+        validade = False
+    return validade
+
