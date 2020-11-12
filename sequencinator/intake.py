@@ -28,7 +28,7 @@ def ler_FASTA_seq(FileHandle):
     maiores = 0 # quantas vezes apareceu o símbolo '>', usado para travar o cíclo no fim da sequência
     while(maiores<2):
         cursor=FileHandle.tell()
-        linha=FileHandle.readline()
+        linha=FileHandle.readline().upper()
         if(linha==""): break
         if linha[0]!='>':
             seq+=linha
