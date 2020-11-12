@@ -13,7 +13,9 @@ def get_proteins(seq):
     '''
     orf = reading_frames(seq)
     proteinas = []
+    print(orf)
     for seq in orf:
         proteinas += re.findall(r'(M[A-Z]*_)', traducao(seq))
     sorted_proteinas = sorted(sorted(set(proteinas)), key=len, reverse=True)
     return sorted_proteinas
+

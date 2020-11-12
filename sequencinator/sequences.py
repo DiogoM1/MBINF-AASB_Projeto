@@ -52,7 +52,7 @@ def reading_frames(seq):
     '''
     orf = []
     for i in range(0, 3):
-        orf.append[seq.upper()[i:], complemento_inverso(seq.upper())[i:]]
+        orf.extend((seq.upper()[i:], complemento_inverso(seq.upper())[i:]))
     return orf
 
 
