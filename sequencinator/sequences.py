@@ -35,12 +35,12 @@ def reading_frames(seq):
 
 def valida(seq):
     '''
-    Verifica se a sequência de ADN é válida
+    Verifica se a sequência de ADN é válida.
    
     Parameters
         ----------
         seq : str
-            Sequência de ADN  
+            Sequência de ADN.  
 
    Returns
         ------
@@ -54,3 +54,27 @@ def valida(seq):
         validade = False
     return validade
 
+
+def contar_bases(seq):
+    '''
+    Conta as bases de uma sequência de ADN.
+
+    Parameters
+    ----------
+    seq : str
+        Sequência de ADN.
+
+    Returns
+    -------
+    Dicionário com a contagem.
+
+    '''
+    pb = {}
+    seq = seq.upper()
+    if  valida(seq) == True:
+        for base in seq:            
+            pb[base] = pb.get(base, 0) + 1
+        return pb
+    else:
+        return None
+    
