@@ -2,5 +2,24 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 Nunc fringilla arcu congue metus aliquam mollis.
 Mauris nec maximus purus. Maecenas sit amet pretium tellus.
 Quisque at dignissim lacus.
+DNA
 acgatcgtcagtgcatgtagcacgtgatgctagctgctgtagctg
 ctgactgtacgtgagatgctgcatgatcgatcgtcgatgacgcag
+
+RNA
+acgucgagcuguacugaucguacguacguacgca
+cauguacuacguacuguagcugacugauguacgac
+acuuagcuacug
+
+PROTA
+msssitdeki sgeqqqpagr klyyntstfa epplvdgegn pinyepevyn pdheklyhnp
+slpaqsiqdt rddellervy sqdqgveyee deedkpnlsa asiksyaltr ftsllhihef
+swenvnpipe lrkmtwqnwn yffmgyfawl saawaffcvs vsvaplaely drptkditwg
+lglvlfvrsa gavifglwtd kssrkwpyit clflfviaql ctpwcdtyek flgvrwitgi
+amggiygcas ataiedapvk arsflsglff sayamgfifa iifyrafgyf rddgwkilfw
+fsiflpilli fwrllwpetk yftkvlkark lilsdavkan ggeplpkanf kqkmvsmkrt
+vqkywllfay lvvllvgpny lthasqdllp tmlraqlgls kdavtvivvv tnigaicggm
+ifgqfmevtg rrlglliact mggcftypaf mlrsekailg agfmlyfcvf gvwgilpihl
+aelapadara lvaglsyqlg nlasaaasti etqladrypl erdasgavik edyakvmail
+tgsvfiftfa cvfvghekfh rdlsspvmkk yinqveeyea dglsisdive qktecasvkm
+idsnvsktye ehietv

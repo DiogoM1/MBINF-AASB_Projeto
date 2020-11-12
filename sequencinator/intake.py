@@ -1,8 +1,10 @@
 def ler_seq(FileHandle):
     '''
-    Parser de uma sequência arbitrária de caracteres
-    É considerado qualquer conjunto de símbolos ACTG de comprimento superior a TAMANHO_MINIMO,
-    que seja contíguo ou separado por '\n' (para apanhar sequências multi-linha) 
+    Função que devolve a sequência (DNA, RNA e aminoácidos) contida num ficheiro aberto
+    PARAMETERS
+    seq: str
+        a sequência de DNA, RNA e aminoácidos
+    returns: sequência contida no ficheiro
     '''
     seq=""; char='';TAMANHO_MINIMO=5
     while(True):
@@ -22,9 +24,11 @@ def ler_seq(FileHandle):
 
 def ler_FASTA_seq(FileHandle):
     '''
-    Parser de um ficheiro no formato FASTA para uma String
-    Dado um ficheiro aberto, com uma posição de cursor, lê a próxima sequência escrita no ficheiro.
-    Retorna uma String com a sequência, ou vazia quando atingir o EOF.
+    Função que devolve a sequência (DNA, RNA e aminoácidos) contida num ficheiro FASTA aberto
+    PARAMETERS
+    seq: str
+        a sequência de DNA, RNA e aminoácidos
+    returns: sequência contida no ficheiro FASTA
     '''
     seq = ""
     maiores = 0 # quantas vezes apareceu o símbolo '>', usado para travar o cíclo no fim da sequência
