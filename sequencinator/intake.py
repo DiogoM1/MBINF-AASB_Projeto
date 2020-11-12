@@ -1,29 +1,23 @@
 def ler_seq(FileHandle):
     '''
-    s
+    Parser de uma sequência arbitrária de caracteres
+    É considerado qualquer conjunto de símbolos ACTG de comprimento superior a TAMANHO_MINIMO,
+    que seja contíguo ou separado por '\n' (para apanhar sequências multi-linha) 
     '''
-    seq = ""
-    maiores = 0
-    while(maiores<2):
-        cursor=FileHandle.tell()
-        linha=FileHandle.readline()
-        if(linha==""): break
-        if linha[0]!='>':
-            seq+=linha
+    inSeq=False; seq=""; char='';TAMANHO_MINIMO=5
+    while(True):
+        char=file.read(1).upper()
+        if (char=='A' or char=='T' or char=='C' or char=='G'): seq+=char
+        elif (char=='\n'): # para sequências em múltiplas linhas
+            i=0 # empata-nabos
+        elif (char==''): # para o EOF
+            if len(seq)>=TAMANHO_MINIMO: return seq
+            else: break
         else:
-            maiores+=1
-    FileHandle.seek(cursor)
-    return seq.replace("\n", "")
-
+            if len(seq)>=TAMANHO_MINIMO: return seq
+            else: seq=""
+            #senão é pequeno demais, continua a procurar
     
-    seq = ""
-    with open(FileHandle, 'r') as file:
-        for line in file:
-            seq.append(line)
-    return seq
-
-# usar regex para validar ????
-
 def ler_FASTA_seq(FileHandle):
     '''
     Parser de um ficheiro no formato FASTA para uma String
@@ -43,16 +37,25 @@ def ler_FASTA_seq(FileHandle):
     FileHandle.seek(cursor)
     return seq.replace("\n", "")
 
+################
+##### MAIN #####
+################
 
+todas_as_seq = []; i=0; seq=""
+path = input("indique o path do ficheiro FASTA que quer abrir:" )
+file = open(path, mode='r', encoding='utf-8')
+# pequeno input/menu para escolher que função chamar
+# isto está marretado e podia-se serializar melhor o código para evitar correr tanto if, safoda :shrug:
+print("1 - FASTA\n2 - Não FASTA")
+while(True):
+    op=input()
+    if op=="1" or op=="2": break 
 
-sequencia = input("indique o path do ficheiro FASTA que quer abrir:" )
-file = open(sequencia, mode='r', encoding='utf-8')
-todas_as_seq = []
-i=0
 while(True):
     i+=1
     input("Carregue no ENTER para ler uma sequência (interromper com Ctrl+C)")
-    seq=ler_FASTA_seq(file)
+    if(op=="1"): seq=ler_FASTA_seq(file)
+    if(op=="2"): seq=ler_seq(file); 
     if seq!="":
         todas_as_seq.append(seq)
         print("Sequencia", i)
