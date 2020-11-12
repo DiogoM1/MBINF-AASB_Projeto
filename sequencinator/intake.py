@@ -1,6 +1,6 @@
 def ler_seq(FileHandle):
     '''
-    Função que devolve a sequência (DNA, RNA e aminoácidos) contida num ficheiro aberto
+    Função que recebe um ficheiro aberto e que devolve uma sequência (DNA, RNA e aminoácidos)
     PARAMETERS
     seq: str
         a sequência de DNA, RNA e aminoácidos
@@ -24,7 +24,7 @@ def ler_seq(FileHandle):
 
 def ler_FASTA_seq(FileHandle):
     '''
-    Função que devolve a sequência (DNA, RNA e aminoácidos) contida num ficheiro FASTA aberto
+    Função que recebe um ficheiro FASTA aberto e que devolve uma sequência (DNA, RNA e aminoácidos)
     PARAMETERS
     seq: str
         a sequência de DNA, RNA e aminoácidos
