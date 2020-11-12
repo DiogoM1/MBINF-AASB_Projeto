@@ -1,5 +1,13 @@
+##
+# Testes para intake.py
+#
+# Todos os testes no folder "test" são executados quando a ação "Test" é invocada.
+#
+##
+
+
 import unittest
-from ../sequencinator/intake.py import ler_seq, ler_FASTA_seq
+from "path para" intake.py import ler_seq, ler_FASTA_seq
 class MyTestCase(unittest.TestCase):
     def test_ler_seq(self):
         
@@ -18,3 +26,4 @@ class MyTestCase(unittest.TestCase):
         file.close
 if __name__ == '__main__':
     unittest.main()
+

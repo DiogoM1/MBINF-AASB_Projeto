@@ -63,7 +63,7 @@ while(True):
     i+=1
     input("Carregue no ENTER para ler uma sequência (interromper com Ctrl+C)")
     if(op=="1"): seq=ler_FASTA_seq(file)
-    if(op=="2"): seq=ler_seq(file); 
+    if(op=="2"): seq=ler_seq(file)
     if seq!="":
         todas_as_seq.append(seq)
         print("Sequencia", i)
