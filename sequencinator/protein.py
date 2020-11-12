@@ -2,8 +2,14 @@ from .sequences import reading_frames, traducao
 import re
 
 
-def reading_frames(seq):
+def get_proteins(seq):
     '''
+    Função que devolve a lista de todas as proteínas ordenadas por tamanho e por ordem alfabética para as do mesmo tamanho
+
+    PARAMETERS
+    seq: str
+        a sequência de
+    returns: lista de proteinas
     '''
     orf = reading_frames(seq)
     proteinas = []
