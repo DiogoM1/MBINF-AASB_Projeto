@@ -4,7 +4,7 @@ def ler_seq(FileHandle):
     É considerado qualquer conjunto de símbolos ACTG de comprimento superior a TAMANHO_MINIMO,
     que seja contíguo ou separado por '\n' (para apanhar sequências multi-linha) 
     '''
-    inSeq=False; seq=""; char='';TAMANHO_MINIMO=5
+    seq=""; char='';TAMANHO_MINIMO=5
     while(True):
         char=file.read(1).upper()
         if (char=='A' or char=='T' or char=='C' or char=='G'): seq+=char
@@ -17,7 +17,9 @@ def ler_seq(FileHandle):
             if len(seq)>=TAMANHO_MINIMO: return seq
             else: seq=""
             #senão é pequeno demais, continua a procurar
-    
+
+###### falta conseguir diferenciar seq de DNA, RNA e de aminoacidos. matem-me
+
 def ler_FASTA_seq(FileHandle):
     '''
     Parser de um ficheiro no formato FASTA para uma String
@@ -28,7 +30,7 @@ def ler_FASTA_seq(FileHandle):
     maiores = 0 # quantas vezes apareceu o símbolo '>', usado para travar o cíclo no fim da sequência
     while(maiores<2):
         cursor=FileHandle.tell()
-        linha=FileHandle.readline().upper()
+        linha=FileHandle.readline()
         if(linha==""): break
         if linha[0]!='>':
             seq+=linha
@@ -36,6 +38,8 @@ def ler_FASTA_seq(FileHandle):
             maiores+=1
     FileHandle.seek(cursor)
     return seq.replace("\n", "")
+
+###### falta conseguir diferenciar seq de DNA, RNA e de aminoacidos. matem-me
 
 ################
 ##### MAIN #####
