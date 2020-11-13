@@ -1,4 +1,4 @@
-from .sequences import reading_frames, traducao
+from sequencinator.sequences import reading_frames, traducao, valida
 import re
 
 
@@ -9,11 +9,13 @@ def get_proteins(seq):
     PARAMETERS
     seq: str
         a sequência de
-    returns: lista de proteinas
+    returns: list de proteinas
     '''
-    orf = reading_frames(seq)
-    proteinas = []
-    for seq in orf:
-        proteinas += re.findall(r'(M[A-Z]*_)', traducao(seq))
-    sorted_proteinas = sorted(sorted(set(proteinas)), key=len, reverse=True)
-    return sorted_proteinas
+    if valida(seq):
+        proteinas = []
+        for seq in reading_frames(seq):
+            proteinas += re.findall(r'(M[A-Z]*_)', traducao(seq))
+        sorted_proteinas = sorted(sorted(set(proteinas)), key=len, reverse=True)
+        return sorted_proteinas
+    else:
+        raise Exception('Não é uma sequência de DNA')

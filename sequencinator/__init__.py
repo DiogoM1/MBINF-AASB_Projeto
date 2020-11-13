@@ -9,4 +9,4 @@ __license__ = ""
 
 from .sequences import complemento_inverso, transcricao, traducao, reading_frames
 from .protein import get_proteins
-from .intake import
+
