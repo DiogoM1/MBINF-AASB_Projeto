@@ -66,6 +66,7 @@ class teste_funcoes(unittest.TestCase):
         self.assertRaises(Exception, get_proteins, "aagtgtgtgtgcgtagctagtctgcattgctagtccatgctatA+76u+*GdUUAa_?/5Caa") #testa para seq. invalida
         self.assertRaises(Exception, get_proteins, "UauaaCuaGucgucuaaUACuccacucGg") #testa para RNA
 
+# TODO: proteinas maiores dois sentidos, proteinas sem_
 
 if __name__ == "__main__":
     unittest.main()

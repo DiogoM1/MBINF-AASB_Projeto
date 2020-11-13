@@ -48,6 +48,7 @@ class MyTestCase(unittest.TestCase):
         self.assertEqual(ler_FASTA_seq(f), "")
         f.close()
 
+# TODO: varios > e seq
 
 if __name__ == '__main__':
     unittest.main()
