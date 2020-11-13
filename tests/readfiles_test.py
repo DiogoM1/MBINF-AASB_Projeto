@@ -7,44 +7,44 @@
 
 
 import unittest
-from intake import ler_FASTA_seq, ler_seq
+from sequencinator.intake import ler_FASTA_seq, ler_seq
+
 
 class MyTestCase(unittest.TestCase):
     
     def test_ler_seq(self):
 
-        f=open(r"D:\Universidade\Mestradooo\Algoritmos para Análise de Sequências Biológicas\MBINF-AASB_Projeto\sequencinator\seq_testes\seq_testar1.txt")
+        f=open(r"seq_testes/seq_testar1.txt")
         self.assertEqual(ler_seq(f), "SVRNFLQRVVLGVDTKKKNSJDGIABJAHIUHUSNJNIYDDEINSLDTEQINDGAPVEKKSPLGYNVSDFTACYLIIEGVIGTGIFATPATILKSVGSVGASYVFWCVGSHUSHUJSUYSVBTSKSJSOJDOJSYFRRRSGAQVAYLEQAYPKPKFLVPVLYAAVSVTLSDDNSNDS")
         f.close()
         
-        f=open(r"D:\Universidade\Mestradooo\Algoritmos para Análise de Sequências Biológicas\MBINF-AASB_Projeto\sequencinator\seq_testes\seq_testar2")
+        f=open(r"seq_testes/seq_testar2")
         self.assertEqual(ler_seq(f), "ATGCGTGAGCTAGGAAACGATAGACGAGTAGACCGATATGC")
         f.close()
 
-        f=open(r"D:\Universidade\Mestradooo\Algoritmos para Análise de Sequências Biológicas\MBINF-AASB_Projeto\sequencinator\seq_testes\seq_testar3")
+        f=open(r"seq_testes/seq_testar3")
         self.assertEqual(ler_seq(f), "ATCGATCGATGACGATGCAGGTGCTAGTGCAGACTGTCTGCT")
         f.close()
 
-        f=open(r"D:\Universidade\Mestradooo\Algoritmos para Análise de Sequências Biológicas\MBINF-AASB_Projeto\sequencinator\seq_testes\seq_testar4")
+        f=open(r"seq_testes/seq_testar4")
         self.assertEqual(ler_seq(f), "")
         f.close()
 
-
     def test_ler_FASTA_seq(self):
         
-        f=open(r"D:\Universidade\Mestradooo\Algoritmos para Análise de Sequências Biológicas\MBINF-AASB_Projeto\sequencinator\FASTA_testes\FASTA_testar1.txt")
+        f=open(r"FASTA_testes/FASTA_testar1.txt")
         self.assertEqual(ler_FASTA_seq(f), "MSSAFVSVRNFLQRVVLGVDTKKNIYDDEINSLDTEQINDGAPVEKKSPLGYNVSDFTACYLIIEGVIGTGIFATPATILKSVGSVGASYVFWCVGFVVNQFTVLMYVEYVTYFRRRSGAQVAYLEQAYPKPKFLVPVLYAAVSVTLSYITSSAASFSQYVFEGANYEATAWQQRGLSILPLFLAAIFTTLSTKWTLRLNSIIGWCKVCFIFFIAFSGFAALAGSTKAPKNHDIFKNAWEGTTTDGNSISNAILKVVFSFGGAPYAFTVVAETHPKNTIK")
         f.close()
        
-        f=open(r"D:\Universidade\Mestradooo\Algoritmos para Análise de Sequências Biológicas\MBINF-AASB_Projeto\sequencinator\seq_testes\seq_testar2")
+        f=open(r"seq_testes/seq_testar2")
         self.assertEqual(ler_FASTA_seq(f), "ATGCGTGAGCTAGGAAACGATAGACGAGTAGACCGATATGC")
         f.close()
         
-        f=open(r"D:\Universidade\Mestradooo\Algoritmos para Análise de Sequências Biológicas\MBINF-AASB_Projeto\sequencinator\FASTA_testes\FASTA_testar3")
+        f=open(r"FASTA_testes/FASTA_testar3")
         self.assertEqual(ler_FASTA_seq(f), "CGUCAGGUAGCUCAGUCGCGGACUGACUUACGCGUACGUCGAUAGCUGCUCGUGAC")
         f.close()
 
-        f=open(r"D:\Universidade\Mestradooo\Algoritmos para Análise de Sequências Biológicas\MBINF-AASB_Projeto\sequencinator\FASTA_testes\FASTA_testar4")
+        f=open(r"FASTA_testes/FASTA_testar4")
         self.assertEqual(ler_FASTA_seq(f), "")
         f.close()
 
