@@ -2,6 +2,74 @@ from .data.dic_codao2amino import gene_code as gene_code
 import re
 
 
+def valida_rna(seq):
+    '''
+    Verifica se a sequência de RNA é válida.
+
+    Parameters
+        ----------
+        seq : str
+            Sequência de ADN.
+
+    Returns
+        ------
+        True ou False
+
+    '''
+    seq = seq.upper()
+    if re.search(r'[^UAGC]', seq) is None:
+        validade = True
+    else:
+        validade = False
+    return validade
+
+
+def valida(seq):
+    '''
+    Verifica se a sequência de ADN é válida.
+
+    Parameters
+        ----------
+        seq : str
+            Sequência de ADN.
+
+    Returns
+        ------
+        True ou False
+
+    '''
+    seq = seq.upper()
+    if re.search(r'[^TAGC]', seq) is None:
+        validade = True
+    else:
+        validade = False
+    return validade
+
+
+def contar_bases(seq):
+    '''
+    Conta as bases de uma sequência de ADN.
+
+    Parameters
+    ----------
+    seq : str
+        Sequência de ADN.
+
+    Returns
+    -------
+    Dicionário com a contagem.
+
+    '''
+    if valida(seq) or valida_rna(seq):
+        pb = {}
+        seq = seq.upper()
+        for base in seq:
+            pb[base] = pb.get(base, 0) + 1
+        return pb
+    else:
+        raise Exception('Não é uma sequência de DNA')
+
+
 def complemento_inverso(seq):
     '''
     Função que devolve o complemento inverso de uma sequência de DNA
@@ -26,7 +94,7 @@ def transcricao(seq):
     returns: str do mRNA para a sequencia fornecida
     '''
     if valida(seq):
-        return complemento_inverso(transcricao(seq)).replace('T', 'U')
+        return complemento_inverso(complemento_inverso(seq)).replace('T', 'U')
     else:
         raise Exception('Não é uma sequência de DNA')
 
@@ -50,6 +118,7 @@ def traducao(seq):
     else:
         raise Exception('Não é uma sequência de DNA')
 
+
 def reading_frames(seq):
     '''
     Função que devolve uma lista com as reading frames
@@ -64,72 +133,5 @@ def reading_frames(seq):
         for i in range(0, 3):
             orf.extend((seq.upper()[i:], complemento_inverso(seq.upper())[i:]))
         return orf
-    else:
-        raise Exception('Não é uma sequência de DNA')
-
-
-def valida_rna(seq):
-    '''
-    Verifica se a sequência de ADN é válida.
-
-    Parameters
-        ----------
-        seq : str
-            Sequência de ADN.
-
-   Returns
-        ------
-        True ou False
-
-    '''
-    seq = seq.upper()
-    if re.search("[^UAGC]", seq) == None:
-        validade = True
-    else:
-        validade = False
-    return validade
-
-def valida(seq):
-    '''
-    Verifica se a sequência de ADN é válida.
-   
-    Parameters
-        ----------
-        seq : str
-            Sequência de ADN.  
-
-   Returns
-        ------
-        True ou False
- 
-    '''
-    seq = seq.upper()     
-    if  re.search("[^TAGC]",seq) == None:        
-        validade = True
-    else:
-        validade = False
-    return validade
-
-
-def contar_bases(seq):
-    '''
-    Conta as bases de uma sequência de ADN.
-
-    Parameters
-    ----------
-    seq : str
-        Sequência de ADN.
-
-    Returns
-    -------
-    Dicionário com a contagem.
-
-    '''
-    if valida(seq) or valida_rna(seq):
-        pb = {}
-        seq = seq.upper()
-        for base in seq:            
-            pb[base] = pb.get(base, 0) + 1
-        return pb
     else:
         raise Exception('Não é uma sequência de DNA')

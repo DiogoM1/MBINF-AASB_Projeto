@@ -1,6 +1,6 @@
 import unittest
 
-from sequencinator.sequences import complemento_inverso, transcricao, traducao, reading_frames, valida, contar_bases
+from sequencinator.sequences import complemento_inverso, transcricao, traducao, reading_frames, valida, contar_bases, valida_rna
 from sequencinator.protein import get_proteins
 
 
@@ -16,13 +16,13 @@ class teste_funcoes(unittest.TestCase):
         self.assertFalse(valida("AuGdUUAa_?/5Caa")) #testa para seq. invalida
 
     def test_valida_RNA(self):
-        self.assertFalse(valida("ATGCTGCAGTGAT")) #ADN
-        self.assertFalse(valida("AGTPAGTPP")) #ADN
-        self.assertTrue(valida("AUGGUUUCA")) #RNA
-        self.assertTrue(valida("aguuacuacgauuaug"))  #minusculas
-        self.assertFalse(valida("agttacmknhtacaawgatdstaetg"))  #minusculas
-        self.assertTrue(valida("UaAaCaaUccGg")) #maiusculas e minusculas
-        self.assertFalse(valida("AuGdUUAa_?/5Caa")) #testa para seq. invalida
+        self.assertFalse(valida_rna("ATGCTGCAGTGAT")) #ADN
+        self.assertFalse(valida_rna("AGTPAGTPP")) #ADN
+        self.assertTrue(valida_rna("AUGGUUUCA")) #RNA
+        self.assertTrue(valida_rna("aguuacuacgauuaug"))  #minusculas
+        self.assertFalse(valida_rna("agttacmknhtacaawgatdstaetg"))  #minusculas
+        self.assertTrue(valida_rna("UaAaCaaUccGg")) #maiusculas e minusculas
+        self.assertFalse(valida_rna("AuGdUUAa_?/5Caa")) #testa para seq. invalida
   
     def test_contar_base(self):
         self.assertEqual(contar_bases("ACGTAG"), {"A":2, "C":1, "G":2, "T":1}) #testa seq normal
