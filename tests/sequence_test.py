@@ -1,7 +1,7 @@
 import unittest
 
 from sequencinator.sequences import complemento_inverso, transcricao, traducao, reading_frames, valida, contar_bases, valida_rna
-from sequencinator.protein import get_proteins, replacement_score
+from sequencinator.protein import get_proteins, replacement_score, seq_aln_score
 
 
 class teste_funcoes(unittest.TestCase):
@@ -72,6 +72,10 @@ class teste_funcoes(unittest.TestCase):
         self.assertEqual(replacement_score("A", "A"), 4)
 
 # TODO: Melhores testes para todas as da semana 5
+
+    def test_seq_aln_score(self):
+        self.assertEqual(seq_aln_score("-HGWAG", "PHSW-G", -8), 9)
+
 
 if __name__ == "__main__":
     unittest.main()

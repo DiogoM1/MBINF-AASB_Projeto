@@ -33,3 +33,22 @@ def replacement_score(letter_a, letter_b):
     :return:int
     """
     return blossum62[letter_a][letter_b]  # Procura na na matriz blossum62 a score, cada letra funciona como coordenada
+
+
+def seq_aln_score(seq_a, seq_b, spc_cost):
+    """
+    Devolve o score do alinhamento direto de duas sequencias, com um calculo de scores para espaços uniforme.
+
+    :param seq_a:str
+    :param seq_b:str
+    :param spc_cost:int (can be negative)
+    :return:int
+    """
+    score = 0 # Inicia o score com valor 0
+    for letter in range(0, len(seq_a)):  # Para cada caracter das duas sequências:
+        if seq_a[letter] == "-" or seq_b[letter] == "-":  # Se for um espaço dar adicionar o valor que utilizador inseriu para o score de cada espaço
+            score += spc_cost
+        else:  # Caso contrário quer dizer que ambos os caracteres são letra e como tal usar a blossum62
+            score += replacement_score(seq_a[letter].upper(), seq_b[letter].upper())
+    return score
+
