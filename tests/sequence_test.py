@@ -1,7 +1,7 @@
 import unittest
 
 from sequencinator.sequences import complemento_inverso, transcricao, traducao, reading_frames, valida, contar_bases, valida_rna
-from sequencinator.protein import get_proteins
+from sequencinator.protein import get_proteins, replacement_score
 
 
 class teste_funcoes(unittest.TestCase):
@@ -67,6 +67,11 @@ class teste_funcoes(unittest.TestCase):
         self.assertRaises(Exception, get_proteins, "UauaaCuaGucgucuaaUACuccacucGg") #testa para RNA
 
 # TODO: proteinas maiores dois sentidos, proteinas sem_
+
+    def test_replacement_score(self):
+        self.assertEqual(replacement_score("A", "A"), 4)
+
+# TODO: Melhores testes para todas as da semana 5
 
 if __name__ == "__main__":
     unittest.main()
