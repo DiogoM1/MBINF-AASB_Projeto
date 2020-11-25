@@ -52,3 +52,14 @@ def seq_aln_score(seq_a, seq_b, spc_cost):
             score += replacement_score(seq_a[letter].upper(), seq_b[letter].upper())
     return score
 
+
+def prep_seq_for_aln(seq):
+    """
+    Função de limpeza e formatação para as seq que vão ser alinhas por matriz
+    :param seq:str
+    :return:str
+    """
+    seq = seq.strip().upper()
+    if seq[0] != "-":
+        seq = "-" + seq
+    return seq

@@ -1,7 +1,7 @@
 import unittest
 
 from sequencinator.sequences import complemento_inverso, transcricao, traducao, reading_frames, valida, contar_bases, valida_rna
-from sequencinator.protein import get_proteins, replacement_score, seq_aln_score
+from sequencinator.protein import get_proteins, replacement_score, seq_aln_score, prep_seq_for_aln
 
 
 class teste_funcoes(unittest.TestCase):
@@ -75,6 +75,11 @@ class teste_funcoes(unittest.TestCase):
 
     def test_seq_aln_score(self):
         self.assertEqual(seq_aln_score("-HGWAG", "PHSW-G", -8), 9)
+
+    def test_prep_seq_for_al(self):
+        self.assertEqual(prep_seq_for_aln("-HGWAG"), "-HGWAG")
+        self.assertEqual(prep_seq_for_aln("HGWAG"), "-HGWAG")
+
 
 
 if __name__ == "__main__":
