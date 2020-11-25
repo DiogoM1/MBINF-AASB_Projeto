@@ -1,10 +1,10 @@
 import unittest
 
 from sequencinator.sequences import complemento_inverso, transcricao, traducao, reading_frames, valida, contar_bases, valida_rna
-from sequencinator.protein import get_proteins, replacement_score, seq_aln_score, prep_seq_for_aln
+from sequencinator.protein import get_proteins, replacement_score, aln_score, prep_seq_for_aln, aln_replacement_score_matrix, aln_needleman, aln_needleman_best, aln_needleman_origin, aln_needleman_traceback
 
 
-class teste_funcoes(unittest.TestCase):
+class TesteFuncoes(unittest.TestCase):
     
     def test_valida(self):
         self.assertTrue(valida("ATGCTGCAGTGAT")) #ADN
@@ -74,12 +74,59 @@ class teste_funcoes(unittest.TestCase):
 # TODO: Melhores testes para todas as da semana 5
 
     def test_seq_aln_score(self):
-        self.assertEqual(seq_aln_score("-HGWAG", "PHSW-G", -8), 9)
+        self.assertEqual(aln_score("-HGWAG", "PHSW-G", -8), 9)
 
     def test_prep_seq_for_al(self):
         self.assertEqual(prep_seq_for_aln("-HGWAG"), "-HGWAG")
         self.assertEqual(prep_seq_for_aln("HGWAG"), "-HGWAG")
 
+    def test_aln_replacement_score_matrix(self):
+        self.assertEqual(aln_replacement_score_matrix(" PHSWG", "HGWAG", -8), [[-8, -8, -8, -8, -8, -8],
+                                                                  [-8, -2, -2, -4, -1, -2],
+                                                                  [-8, 8, -2, -2, -2, -2],
+                                                                  [-8, -1, 0, -3, 1, 0],
+                                                                  [-8, -2, -2, 11, -3, -2],
+                                                                  [-8, -2, 6, -2, 0, 6]])
+        self.assertEqual(aln_replacement_score_matrix("PHSWG", "HGWAG", -8), [[-8, -8, -8, -8, -8, -8],
+                                                                  [-8, -2, -2, -4, -1, -2],
+                                                                  [-8, 8, -2, -2, -2, -2],
+                                                                  [-8, -1, 0, -3, 1, 0],
+                                                                  [-8, -2, -2, 11, -3, -2],
+                                                                  [-8, -2, 6, -2, 0, 6]])
+        self.assertEqual(aln_replacement_score_matrix("PHSWG", "HGwAG", -8), [[-8, -8, -8, -8, -8, -8],
+                                                                  [-8, -2, -2, -4, -1, -2],
+                                                                  [-8, 8, -2, -2, -2, -2],
+                                                                  [-8, -1, 0, -3, 1, 0],
+                                                                  [-8, -2, -2, 11, -3, -2],
+                                                                  [-8, -2, 6, -2, 0, 6]])
+
+    def test_aln_needleman(self):
+        """
+        """
+
+    def test_aln_needleman_origin(self):
+        self.assertEqual(aln_needleman_origin('IPGKASYD', 'VSPAGMASGYD', -4), [
+            ["", "E", "E", "E", "E", "E", "E", "E", "E", "E", "E", "E"],
+            ["C", "D", "E", "E", "E", "E", "E", "E", "E", "E", "E", "E"],
+            ["C", "C", "D", "D", "E", "E", "E", "E", "E", "E", "E", "E"],
+            ["C", "C", "D", "C", "D", "D", "E", "E", "E", "DE", "E", "E"],
+            ["C", "C", "DC", "DC", "C", "DC", "D", "DE", "D", "E", "E", "E"],
+            ["C", "C", "D", "DC", "D", "D", "DC", "D", "E", "E", "E", "E"],
+            ["C", "C", "D", "D", "C", "D", "D", "C", "D", "E", "E", "E"],
+            ["C", "C", "C", "D", "C", "C", "D", "C", "C", "D", "D", "E"],
+            ["C", "C", "C", "D", "C", "C", "C", "DC", "C", "D", "C", "D"]
+        ])
+
+    def test_aln_needleman_best(self):
+        self.assertEqual(aln_needleman_best('HGWAG', 'PHSWG', -8), 9)
+        self.assertEqual(aln_needleman_best(' HGWAG ', ' PHSWG', -8), 9)
+        self.assertEqual(aln_needleman_best('HGwAG', 'phswg', -8), 9)
+        self.assertEqual(aln_needleman_best('HGWAG', 'PHSWG', -8), 9)
+        self.assertEqual(aln_needleman_best('IPGKASYD', 'VSPAGMASGYD', -4), 24)
+
+    def test_aln_needleman_traceback(self):
+        self.assertEqual(aln_needleman_traceback('HGWAG', 'PHSWG', -8), ["-HGWAG", "PHSW-G"])
+        self.assertEqual(aln_needleman_traceback('IPGKASYD', 'VSPAGMASGYD', -4), ["I-P-GKAS-YD", "VSPAGMASGYD"])
 
 
 if __name__ == "__main__":

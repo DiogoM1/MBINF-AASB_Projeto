@@ -18,7 +18,11 @@ reading_frames - Função que devolve uma lista com as reading frames
 Proteinas
 get_proteins - Função que devolve a lista de todas as proteínas ordenadas por tamanho e por ordem alfabética para as do mesmo tamanho
 replacement_score - Devolve o score do alinhamento do aa A com aa B usando os scores blossum62
-seq_aln_score - Devolve o score do alinhamento direto de duas sequencias, com um calculo de scores para espaços uniforme.
+aln_score - Devolve o score do alinhamento direto de duas sequencias, com um calculo de scores para espaços uniforme.
+aln_replacement_score_matrix - Devolve o score do alinhamento do aa A com aa B para todas as combinações da matriz usando os scores blossum62
+aln_needleman - Devolve a matriz de alinhamento do algoritmo Needleman-Wunsch
+aln_needleman_origin - Devolve o score do melhor alinhamento de duas sequencias com o algoritmo Needleman-Wunsch
+aln_needleman_traceback - Devolve as duas seq no seu melhor alinhamento com o algoritmo de needleman-wunsch
 
 """
 
@@ -27,5 +31,5 @@ __author__ = "André Ramos, Angelina Eiras, Diogo Macedo, Pedro Gonçalves"
 __license__ = ""
 
 from .sequences import complemento_inverso, transcricao, traducao, reading_frames, valida_rna, valida, contar_bases
-from .protein import get_proteins, replacement_score, seq_aln_score
+from .protein import get_proteins, replacement_score, aln_score, aln_replacement_score_matrix, aln_needleman, aln_needleman_origin, aln_needleman_traceback
 from .intake import ler_FASTA_seq, ler_seq
