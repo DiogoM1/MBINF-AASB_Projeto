@@ -75,10 +75,10 @@ def aln_nw_origin(seq_a, seq_b, spc_cost):
                 # Comparação com as 3 origens possiveis para perceber a origem do valor da matriz de needleman
                 if cell_max == needleman_matrix[a-1][b-1]+rep_matrix[a][b]:
                     origin += "D"  # Diagonal
-                if cell_max == needleman_matrix[a][b-1]+int(spc_cost):
-                    origin += "E"  # Esquerda/horizontal
                 if cell_max == needleman_matrix[a-1][b]+int(spc_cost):
                     origin += "C"  # Cima/vertical
+                if cell_max == needleman_matrix[a][b-1]+int(spc_cost):
+                    origin += "E"  # Esquerda/horizontal
             origin_matrix[a][b] = origin  # adição das letras que codificam a orogem à nova matriz
     return origin_matrix
 
@@ -94,5 +94,5 @@ def aln_nw_traceback(seq_a, seq_b, spc_cost):
     """
     matrix = aln_nw(seq_a, seq_b, spc_cost)
     origin_matrix = aln_nw_origin(seq_a, seq_b, spc_cost)
-    aln = aln_origin_traceback(origin_matrix, seq_a, seq_b, len(seq_a), len(seq_b), "R")  # Começa no fim da matrix
+    aln = aln_origin_traceback(origin_matrix, seq_a, seq_b, len(seq_a), len(seq_b), "")  # Começa no fim da matrix
     return aln
