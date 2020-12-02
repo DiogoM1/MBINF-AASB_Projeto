@@ -18,3 +18,14 @@ def find_last_max(matrix):
             if matrix[a][b] == max and a+b >= max_index_sum:
                 index_a, index_b = a, b
     return index_a, index_b
+
+
+def find_all_max(matrix):
+    # finds the all max coordinates
+    max = max_matrix(matrix)
+    index_list = []
+    for a in range(0, len(matrix)):
+        for b in range(0, len(matrix[0])):
+            if matrix[a][b] == max:
+                index_list.append((a, b))
+    return index_list
