@@ -197,7 +197,7 @@ class TesteFuncoes(unittest.TestCase):
                           ["R", "R", "D", "C", "D", "D"]])
 
     def test_aln_sw_traceback(self):
-        self.assertEqual(aln_sw_traceback('HGWAG', 'PHSWG', -8), ["HGWA", "HSWG"])
+        self.assertEqual(aln_sw_traceback('HGWAG', 'PHSWG', -8), [['HGW', 'HSW'], ['HGWA', 'HSWG']])
 
     def test_aln_graph(self):
         self.assertEqual(aln_graph("CCATCGCTGACAGATCGCCGTT", "CGCCGTTCCATAGCTGTCACATCGCCGTT"),

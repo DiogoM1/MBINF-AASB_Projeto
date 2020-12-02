@@ -1,6 +1,6 @@
 from sequencinator import aln_replacement_score_matrix
 from sequencinator.aln import aln_origin_traceback
-from sequencinator.matrix_tools import find_last_max
+from sequencinator.matrix_tools import find_last_max, find_all_max
 
 
 def aln_pd_sw(matrix, spc_cost):
@@ -72,7 +72,10 @@ def aln_sw_traceback(seq_a, seq_b, spc_cost):
     :return: list[str, str]
     """
     matrix = aln_sw(seq_a, seq_b, spc_cost)
-    a, b = find_last_max(matrix)
+    max_indexes = find_all_max(matrix)
     origin_matrix = aln_sw_origin(seq_a, seq_b, spc_cost)
-    aln = aln_origin_traceback(origin_matrix, seq_a, seq_b, a, b, "R")  # Começa no maior ultimo valor da matrix
+    aln = []
+    for origin in max_indexes:
+        a, b = origin[0], origin[1]
+        aln.append(aln_origin_traceback(origin_matrix, seq_a, seq_b, a, b, "R"))  # Começa no maior ultimo valor da matrix
     return aln
