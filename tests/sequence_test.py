@@ -8,7 +8,7 @@ from sequencinator.aln_sw import aln_sw, aln_sw_origin, aln_sw_traceback
 from sequencinator import replacement_score, aln_score, aln_replacement_score_matrix, aln_nw, \
     aln_nw_origin, aln_nw_traceback
 from sequencinator.aln_graph import aln_graph
-from sequencinator.matrix_tools import max_matrix, find_last_max
+from sequencinator.matrix_tools import max_matrix, find_last_max, find_all_max
 
 
 class TesteFuncoes(unittest.TestCase):
@@ -162,6 +162,14 @@ class TesteFuncoes(unittest.TestCase):
                                         [-8, -2, -2, 11, -3, -2],
                                         [-8, -2, 6, -2, 0, 6]]), (4, 3))
 
+    def test_find_last_max(self):
+        self.assertEqual(find_all_max([[-8, -8, -8, -8, -8, -8],
+                                        [-8, -2, -2, -4, -1, -2],
+                                        [-8, 8, -2, -2, -2, -2],
+                                        [-8, -1, 0, -3, 1, 0],
+                                        [-8, -2, -2, 11, -3, -2],
+                                        [-8, -2, 6, 11, 0, 6]]), [(4, 3), (5, 3)])
+
     def test_max_matrix(self):
         self.assertEqual(max_matrix([[-8, -8, -8, -8, -8, -8],
                                      [-8, -2, -2, -4, -1, -2],
@@ -189,7 +197,7 @@ class TesteFuncoes(unittest.TestCase):
                           ["R", "R", "D", "C", "D", "D"]])
 
     def test_aln_sw_traceback(self):
-        self.assertEqual(aln_sw_traceback('HGWAG', 'PHSWG', -8), ["HGWA", "HSWG"])
+        self.assertEqual(aln_sw_traceback('HGWAG', 'PHSWG', -8), [['HGW', 'HSW'], ['HGWA', 'HSWG']])
 
     def test_aln_graph(self):
         self.assertEqual(aln_graph("CCATCGCTGACAGATCGCCGTT", "CGCCGTTCCATAGCTGTCACATCGCCGTT"),
