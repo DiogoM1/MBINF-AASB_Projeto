@@ -45,3 +45,4 @@ from .protein import get_proteins
 from .aln import replacement_score, aln_score, aln_replacement_score_matrix
 from .aln_nw import aln_nw, aln_nw_origin, aln_nw_traceback
 from .aln_sw import aln_sw, aln_sw_origin, aln_sw_traceback
+from .aln_graph import aln_graph
